@@ -88,4 +88,4 @@ We welcome contributions to Sol-Sentry! If you have suggestions for improvements
 If you need help or have any questions, please check out our Discussions page or open an issue.
 
 ## License
-Sol-Sentry is released under the [MIT License]().
+Sol-Sentry is released under the [MIT License](https://github.com/cywf/Sol-Sentry/blob/main/LICENSE).
