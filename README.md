@@ -1,5 +1,7 @@
 # Sol-Sentry
 
+![Sol Sentry Logo](assets/sol-sentry-logo.png)
+
 Welcome to the Sol-Sentry repository, a custom AI tool designed for enhancing the security and efficiency of Solana smart contract development. Sol-Sentry offers in-depth analysis, predictive threat modeling, and best practice recommendations to fortify your blockchain projects.
 
 ## Installation
