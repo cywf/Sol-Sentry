@@ -82,7 +82,7 @@ For a more integrated experience, Sol-Sentry can be accessed through the GPT sto
 Using Sol-Sentry via the GPT store allows for programmatic access to Sol-Sentry's capabilities, making it a versatile addition to your smart contract development toolkit.
 
 ## Contributing
-We welcome contributions to Sol-Sentry! If you have suggestions for improvements or new features, please open an issue or submit a pull request. For more detailed information, check out our [CONTRIBUTING.md]().
+We welcome contributions to Sol-Sentry! If you have suggestions for improvements or new features, please open an issue or submit a pull request. For more detailed information, check out our [CONTRIBUTING.md](https://github.com/cywf/Sol-Sentry/blob/main/CONTRIBUTING.md).
 
 ## Support
 If you need help or have any questions, please check out our Discussions page or open an issue.
