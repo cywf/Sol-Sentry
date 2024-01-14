@@ -44,6 +44,13 @@ To test the overflow contract:
 
 Sol-Sentry's capabilities should be able to detect this overflow attempt and handle it according to the configured security policies, whether that's reverting the transaction, logging the event, or other custom actions.
 
+Each contract necessitates tailored adjustments to its accompanying files to accurately represent the specific logic and state pertinent to that contract's functionality. For instance, the `trigger_overflow` function within `processor.rs` currently serves as a simplified demonstration and must be elaborated with genuine overflow logic tailored to this contract.
+
+Within `lib.rs`, the `process_instruction` function awaits completion; it must encapsulate the logic for routing to the relevant handler based on the instruction data received.
+
+The `Cargo.toml` file is essential as it delineates the version of the Solana program your contract targets and characterizes your package’s details.
+
+
 ## Contributing
 
 If you have suggestions for improving the overflow contract or have identified potential enhancements, please submit a pull request with your recommended changes. We appreciate community feedback and contributions to make Sol-Sentry a robust security solution.
