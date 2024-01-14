@@ -2,19 +2,20 @@
 // PROVIDERS CONFIGURATION //
 // ----------------------- //
 
-# Uncomment the provider you wish to configure
-# provider "aws" {
-#   region
-= "us-west-1"
+# providers.tf
 
-# ... other configuration ...
-}
+# Uncomment to use AWS
+# provider "aws" {
+#   region = var.aws_region
+# }
+
+# Uncomment to use Azure
+# provider "azure" {
+#   region = var.azure_region
+# }
+
+# Uncomment to use GCP
 provider "google" {
-project = "my-gcp-project"
-region = "us-central1"
-# ... other configuration ...
-}
-provider "azurerm" {
-features {}
-# ... other configuration ...
+    project = var.gcp_project
+    region  = var.gcp_region
 }
