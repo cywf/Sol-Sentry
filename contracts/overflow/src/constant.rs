@@ -1,0 +1,1 @@
+pub const MAXIMUM_OVERFLOW_VALUE: u64 = u64::MAX;
