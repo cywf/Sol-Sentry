@@ -2,23 +2,18 @@
 // OUTPUTS CONFIGURATION //
 // --------------------- //
 
-# Output for an AWS VPC ID, conditionally displayed if the AWS module is used
+# Outputs Configuration
 output "aws_vpc_id" {
-  value       = var.use_aws ? module.aws_infrastructure.vpc_id : ""
   description = "The ID of the VPC in AWS"
-  condition   = var.use_aws
+  value       = var.use_aws ? module.aws_infrastructure.vpc_id : null
 }
 
-# Output for a GCP VPC ID, conditionally displayed if the GCP module is used
 output "gcp_vpc_id" {
-  value       = var.use_gcp ? module.gcp_infrastructure.vpc_id : ""
   description = "The ID of the VPC in GCP"
-  condition   = var.use_gcp
+  value       = var.use_gcp ? module.gcp_infrastructure.vpc_id : null
 }
 
-# Output for an Azure VNet ID, conditionally displayed if the Azure module is used
 output "azure_vnet_id" {
-  value       = var.use_azure ? module.azure_infrastructure.vnet_id : ""
   description = "The ID of the VNet in Azure"
-  condition   = var.use_azure
+  value       = var.use_azure ? module.azure_infrastructure.vnet_id : null
 }

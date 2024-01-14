@@ -2,55 +2,47 @@
 // MAIN CONFIGURATION //
 // ------------------ //
 
-# Specify the Terraform version
+// Specify the Terraform version
 terraform {
   required_version = ">= 0.13"
 }
 
-# Initialize the required providers
+// AWS provider configuration
 provider "aws" {
   region = var.aws_region
-  version = "~> 3.0"
-  alias = "aws"
+  // version should be set to a compatible version with the resources being used
 }
 
+// GCP provider configuration
 provider "google" {
   project = var.gcp_project
   region  = var.gcp_region
-  version = "~> 3.0"
-  alias = "google"
+  // version should be set to a compatible version with the resources being used
 }
 
+// Azure provider configuration
 provider "azurerm" {
   features {}
-  version = "~> 2.0"
-  alias = "azurerm"
+  // version should be set to a compatible version with the resources being used
 }
 
-# Include modules based on provider choice
+// Include AWS infrastructure module conditionally
 module "aws_infrastructure" {
   source = "./modules/aws"
-  providers = {
-    aws = aws.aws
-  }
-  # Add any required variables here
+  count  = var.use_aws ? 1 : 0
+  // Pass required variables if needed
 }
 
+// Include GCP infrastructure module conditionally
 module "gcp_infrastructure" {
   source = "./modules/gcp"
-  providers = {
-    google = google.google
-  }
-  # Add any required variables here
+  count  = var.use_gcp ? 1 : 0
+  // Pass required variables if needed
 }
 
+// Include Azure infrastructure module conditionally
 module "azure_infrastructure" {
   source = "./modules/azure"
-  providers = {
-    azurerm = azurerm.azurerm
-  }
-  # Add any required variables here
+  count  = var.use_azure ? 1 : 0
+  // Pass required variables if needed
 }
-
-# Conditionally use modules based on user input
-# This logic will be controlled by the terraform-config.py script
