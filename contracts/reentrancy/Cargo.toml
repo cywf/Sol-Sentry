@@ -1,7 +1,12 @@
 [package]
-name = "reentrancy_contract"
+name = "reentrancy"
 version = "0.1.0"
+authors = ["Sol-Sentry"]
 edition = "2018"
 
 [dependencies]
 solana-program = "1.7.11"
+
+[lib]
+name = "reentrancy"
+crate-type = ["cdylib", "lib"]
