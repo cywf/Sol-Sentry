@@ -1,0 +1,49 @@
+{
+  "name": "assess_permissioning",
+  "description": "Assesses the permissioning and access control mechanisms of a smart contract to ensure only authorized entities can execute certain functions or access specific data.",
+  "parameters": {
+    "code": {
+      "type": "string",
+      "description": "The Solidity smart contract code to assess for permissioning."
+    },
+    "analysis_type": {
+      "type": "string",
+      "enum": ["Static", "Dynamic"],
+      "description": "The type of analysis to perform on the smart contract code."
+    }
+  },
+  "required": ["code", "analysis_type"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "permissioning_report": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "function_name": {
+              "type": "string",
+              "description": "The name of the smart contract function being analyzed."
+            },
+            "access_control": {
+              "type": "string",
+              "description": "Details of the access control mechanisms in place for this function."
+            },
+            "status": {
+              "type": "string",
+              "enum": ["Secure", "Warning", "Insecure"],
+              "description": "The security status of the permissioning for this function."
+            },
+            "recommendation": {
+              "type": "string",
+              "description": "Recommendations to improve the access control mechanisms."
+            }
+          },
+          "required": ["function_name", "access_control", "status", "recommendation"]
+        },
+        "description": "A detailed report on the permissioning and access control mechanisms of each function in the smart contract."
+      }
+    },
+    "required": ["permissioning_report"]
+  }
+}
