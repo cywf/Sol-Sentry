@@ -1,0 +1,47 @@
+{
+  "name": "evaluate_oracle_integrity",
+  "description": "Evaluate the integrity and trustworthiness of oracles used within a smart contract.",
+  "parameters": {
+    "contract_code": {
+      "type": "string",
+      "description": "The Solidity code of the smart contract using oracles."
+    },
+    "oracle_addresses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Addresses of the oracles used in the smart contract for external data feeds."
+      },
+      "description": "A list of oracle contract addresses to be evaluated for integrity checks."
+    }
+  },
+  "required": ["contract_code", "oracle_addresses"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "integrity_report": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "oracle_address": {
+              "type": "string",
+              "description": "The address of the oracle being evaluated."
+            },
+            "trust_score": {
+              "type": "number",
+              "description": "A score representing the trustworthiness of the oracle, from 0 (not trustworthy) to 1 (fully trustworthy)."
+            },
+            "analysis_comments": {
+              "type": "string",
+              "description": "Additional comments on the oracle's behavior, data quality, and reliability."
+            }
+          },
+          "required": ["oracle_address", "trust_score", "analysis_comments"]
+        },
+        "description": "A comprehensive report on the integrity and trustworthiness of the oracles, including trust scores and detailed analysis."
+      }
+    },
+    "required": ["integrity_report"]
+  }
+}
