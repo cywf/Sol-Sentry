@@ -1,0 +1,49 @@
+{
+  "name": "analyze_contract_security",
+  "description": "Analyzes smart contracts for security vulnerabilities, including checks for common patterns associated with known vulnerabilities such as reentrancy, overflow/underflow, and unhandled exceptions.",
+  "parameters": {
+    "code": {
+      "type": "string",
+      "description": "The Solidity smart contract code to analyze."
+    },
+    "language": {
+      "type": "string",
+      "enum": ["Solidity"],
+      "description": "The programming language of the smart contract."
+    },
+    "version": {
+      "type": "string",
+      "description": "The compiler version used for the smart contract."
+    }
+  },
+  "required": ["code", "language", "version"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "vulnerabilities": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "issue": {
+              "type": "string",
+              "description": "A description of the identified issue."
+            },
+            "severity": {
+              "type": "string",
+              "enum": ["Low", "Medium", "High", "Critical"],
+              "description": "The severity level of the identified issue."
+            },
+            "recommendation": {
+              "type": "string",
+              "description": "Recommended actions or fixes for the identified issue."
+            }
+          },
+          "required": ["issue", "severity", "recommendation"]
+        },
+        "description": "A list of identified security vulnerabilities within the smart contract."
+      }
+    },
+    "required": ["vulnerabilities"]
+  }
+}
