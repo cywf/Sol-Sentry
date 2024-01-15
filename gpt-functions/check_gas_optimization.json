@@ -1,0 +1,52 @@
+{
+  "name": "check_gas_optimization",
+  "description": "Evaluates the gas efficiency of smart contract functions and suggests optimizations to reduce transaction costs.",
+  "parameters": {
+    "contract_code": {
+      "type": "string",
+      "description": "The source code of the smart contract in Solidity."
+    },
+    "optimization_level": {
+      "type": "string",
+      "enum": ["Basic", "Advanced"],
+      "description": "The level of gas optimization analysis to perform."
+    }
+  },
+  "required": ["contract_code", "optimization_level"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "optimization_report": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "function_name": {
+              "type": "string",
+              "description": "The name of the smart contract function being analyzed."
+            },
+            "current_gas_usage": {
+              "type": "integer",
+              "description": "The current amount of gas used by the function."
+            },
+            "suggested_optimizations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Specific suggestions for reducing gas usage."
+              },
+              "description": "List of suggested optimizations to reduce gas usage."
+            },
+            "potential_gas_savings": {
+              "type": "integer",
+              "description": "The estimated amount of gas that could be saved with the suggested optimizations."
+            }
+          },
+          "required": ["function_name", "current_gas_usage", "suggested_optimizations", "potential_gas_savings"]
+        },
+        "description": "A detailed report on the gas usage of smart contract functions with recommendations for optimizations."
+      }
+    },
+    "required": ["optimization_report"]
+  }
+}
