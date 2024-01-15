@@ -1,0 +1,49 @@
+{
+  "name": "detect_reentrancy",
+  "description": "Detect potential reentrancy vulnerabilities in smart contract functions that could lead to security breaches.",
+  "parameters": {
+    "contract_code": {
+      "type": "string",
+      "description": "The full Solidity source code of the smart contract to be analyzed for reentrancy vulnerabilities."
+    },
+    "analysis_depth": {
+      "type": "string",
+      "enum": ["Shallow", "Deep"],
+      "description": "The depth of analysis to perform; 'Shallow' for quick checks or 'Deep' for comprehensive analysis."
+    }
+  },
+  "required": ["contract_code", "analysis_depth"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "vulnerability_report": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "function_name": {
+              "type": "string",
+              "description": "The name of the smart contract function where a reentrancy vulnerability is detected."
+            },
+            "severity_level": {
+              "type": "string",
+              "enum": ["Warning", "Critical"],
+              "description": "The severity level of the detected reentrancy vulnerability."
+            },
+            "suggested_fixes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Recommended solutions to mitigate the reentrancy vulnerability."
+              },
+              "description": "A list of potential fixes to mitigate the detected reentrancy issues."
+            }
+          },
+          "required": ["function_name", "severity_level", "suggested_fixes"]
+        },
+        "description": "A report detailing detected reentrancy vulnerabilities in smart contract functions, including severity levels and mitigation recommendations."
+      }
+    },
+    "required": ["vulnerability_report"]
+  }
+}
