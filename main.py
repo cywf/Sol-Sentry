@@ -115,4 +115,4 @@ st.markdown("""
 # Ensure the app runs only if it's the main module
 if __name__ == "__main__":
     # Execute the Streamlit interface
-    st._main_run_clbk()
+#    st._main_run_clbk()
