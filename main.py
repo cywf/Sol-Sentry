@@ -1,7 +1,10 @@
+# Import the required libraries
+
 import streamlit as st
 import openai
 from dotenv import load_dotenv
 import os
+import json
 
 # Load environment variables
 load_dotenv()
