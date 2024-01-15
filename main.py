@@ -5,6 +5,7 @@ import openai
 from dotenv import load_dotenv
 import os
 import json
+import requests
 
 # Load environment variables
 load_dotenv()
