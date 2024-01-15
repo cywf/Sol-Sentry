@@ -1,0 +1,60 @@
+{
+  "name": "audit_transaction_flow",
+  "description": "Analyzes the flow of transactions within a smart contract to identify any potential bottlenecks or security vulnerabilities such as reentrancy or front-running.",
+  "parameters": {
+    "code": {
+      "type": "string",
+      "description": "The Solidity smart contract code to audit for transaction flow."
+    },
+    "analysis_depth": {
+      "type": "string",
+      "enum": ["Shallow", "Deep"],
+      "description": "Depth of the transaction flow analysis."
+    }
+  },
+  "required": ["code", "analysis_depth"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "transaction_flow_report": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "The transaction path within the smart contract, represented by a sequence of function calls."
+            },
+            "bottlenecks": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "A list of identified bottlenecks along the transaction path."
+              },
+              "description": "Identified bottlenecks within the transaction flow."
+            },
+            "vulnerabilities": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "A list of potential security vulnerabilities found."
+              },
+              "description": "Potential security vulnerabilities identified in the transaction flow."
+            },
+            "recommendations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Recommendations to mitigate identified bottlenecks and vulnerabilities."
+              },
+              "description": "Recommendations for improving the transaction flow security."
+            }
+          },
+          "required": ["path", "bottlenecks", "vulnerabilities", "recommendations"]
+        },
+        "description": "A comprehensive report on the transaction flow within the smart contract, highlighting areas of concern and suggested improvements."
+      }
+    },
+    "required": ["transaction_flow_report"]
+  }
+}
