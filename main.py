@@ -31,39 +31,51 @@ st.markdown("""
 st.title('Sol-Sentry: Smart Contract Analysis')
 st.subheader("An AI-powered assistant for Solana smart contract analysis")
 
-st.sidebar.header('About Sol-Sentry')
-st.sidebar.info("Sol-Sentry is a tool developed to assist blockchain developers in securing their smart contracts using AI.")
+# Sidebar for user input
+st.sidebar.header('User Input')
+user_name = st.sidebar.text_input("Enter your name:")
+user_prompt = st.sidebar.text_area("Enter your prompt for the assistant:")
 
-# Function to analyze the smart contract using OpenAI
-def analyze_contract(code):
-    try:
-        response = openai.Completion.create(
-            engine="davinci-codex",
-            prompt=f"Analyze the following Solana smart contract for potential vulnerabilities:\n\n{code}",
-            temperature=0,
-            max_tokens=150,
-            top_p=1.0,
-            frequency_penalty=0.0,
-            presence_penalty=0.0,
-            stop=["#"]
-        )
-        return response.choices[0].text.strip()
-    except Exception as e:
-        return f"An error occurred: {str(e)}"
+# Function to fetch and run the appropriate analysis function
+def run_analysis_function(code, function_name):
+    # Retrieve the function config from the repository
+    function_config_url = f"https://raw.githubusercontent.com/cywf/Sol-Sentry/main/gpt-functions/{function_name}.json"
+    function_config_response = requests.get(function_config_url)
+    
+    if function_config_response.status_code == 200:
+        function_config = function_config_response.json()
+        # Here you would include the logic to interpret the function_config and execute the function
+        # This is a placeholder for the actual function execution logic
+        # You need to implement the function execution based on the function_config and code provided
+        # For example:
+        # result = execute_function(function_config, code)
+        # return result
+        pass
+    else:
+        return "Function configuration could not be retrieved."
 
-# Text input for smart contract code
-contract_code = st.text_area("Enter the Solana smart contract code here:", height=300)
+# File uploader for the contract code
+uploaded_file = st.sidebar.file_uploader("Upload the smart contract code as a file:", type=["sol"])
+
+# Optional: Direct code input
+direct_code_input = st.sidebar.text_area("Or paste the smart contract code directly here:", height=150)
 
 # Button to trigger the analysis
-if st.button("Analyze Contract"):
-    if contract_code:  # only proceed if the code is provided
+if st.sidebar.button("Analyze Contract"):
+    # Determine the source of the code
+    code_to_analyze = direct_code_input if direct_code_input else uploaded_file.getvalue().decode("utf-8") if uploaded_file else ""
+    
+    if code_to_analyze:  # only proceed if the code is provided
         with st.spinner('Analyzing the smart contract...'):
-            analysis_result = analyze_contract(contract_code)
+            # The 'analyze_contract' function is a placeholder for the actual function you want to run
+            # You need to determine the function name dynamically based on the user prompt or some other logic
+            function_name = "analyze_contract"  # Replace with dynamic function name determination logic
+            analysis_result = run_analysis_function(code_to_analyze, function_name)
             st.success("Analysis complete")
             st.subheader("Analysis Result:")
             st.write(analysis_result)
     else:
-        st.error("Please enter the smart contract code to proceed.")
+        st.error("Please provide the smart contract code to proceed.")
 
 # Streamlit interface customization for dark mode and overall styling
 st.markdown("""
@@ -91,6 +103,11 @@ st.markdown("""
         .stAlert {
             background-color: #262d3a;
             border-left: 5px solid #21ce99;
+        }
+        /* File uploader customization */
+        .css-1cpxqw2 {
+            background-color: #1f2736;
+            border-color: #21ce99;
         }
     </style>
 """, unsafe_allow_html=True)
