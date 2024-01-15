@@ -41,12 +41,12 @@ def analyze_contract(code):
             max_tokens=150,
             top_p=1.0,
             frequency_penalty=0.0,
-                    presence_penalty=0.0,
-        stop=["#"]
-    )
-    return response.choices[0].text.strip()
-except Exception as e:
-    return f"An error occurred: {str(e)}"
+            presence_penalty=0.0,
+            stop=["#"]
+        )
+        return response.choices[0].text.strip()
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
 
 # Text input for smart contract code
 contract_code = st.text_area("Enter the Solana smart contract code here:", height=300)
