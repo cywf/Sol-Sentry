@@ -110,4 +110,4 @@ st.markdown("""
 # Check for the main module execution
 if __name__ == "__main__":
     # Execute the Streamlit interface
-    st._main_run_clbk()
+st._main_run_clbk()
