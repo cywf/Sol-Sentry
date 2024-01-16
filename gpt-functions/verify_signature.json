@@ -1,0 +1,38 @@
+{
+  "name": "verify_signature",
+  "description": "Verifies the digital signature of a message or transaction to ensure its authenticity and integrity.",
+  "parameters": {
+    "message": {
+      "type": "string",
+      "description": "The original message or transaction data that was signed."
+    },
+    "signature": {
+      "type": "string",
+      "description": "The digital signature that needs to be verified."
+    },
+    "public_key": {
+      "type": "string",
+      "description": "The public key of the signer used to verify the signature."
+    },
+    "signature_algorithm": {
+      "type": "string",
+      "enum": ["ECDSA", "RSA", "EdDSA"],
+      "description": "The algorithm used for signing and verification."
+    }
+  },
+  "required": ["message", "signature", "public_key", "signature_algorithm"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "is_valid": {
+        "type": "boolean",
+        "description": "Indicates whether the signature is valid and matches the message and public key."
+      },
+      "details": {
+        "type": "string",
+        "description": "Additional details about the verification process or errors encountered."
+      }
+    },
+    "description": "The result of the signature verification, indicating its validity and providing additional details."
+  }
+}
