@@ -111,5 +111,5 @@ st.markdown("""
 st._main_run_clbk()
 
 # Check for the main module execution
-if __name__ == "__main__":
+#if __name__ == "__main__":
     
