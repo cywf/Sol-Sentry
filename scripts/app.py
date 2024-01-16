@@ -107,9 +107,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Execute the Streamlit interface
-st._main_run_clbk()
-
 # Check for the main module execution
-#if __name__ == "__main__":
-    
+if __name__ == "__main__":
+    # Execute the Streamlit interface
+    st._main_run_clbk()
