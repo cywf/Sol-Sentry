@@ -1,0 +1,55 @@
+{
+  "name": "validate_contract_compliance",
+  "description": "Validate if the smart contract complies with standard security protocols and best practices in the blockchain industry.",
+  "parameters": {
+    "contract_code": {
+      "type": "string",
+      "description": "The full smart contract code to be analyzed for compliance."
+    },
+    "compliance_standards": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "List of compliance standards or guidelines to be checked against."
+      },
+      "description": "A set of compliance standards or guidelines that the contract should adhere to."
+    },
+    "blockchain_platform": {
+      "type": "string",
+      "description": "The blockchain platform for which the contract is written (e.g., Ethereum, Solana)."
+    }
+  },
+  "required": ["contract_code", "compliance_standards", "blockchain_platform"],
+  "output": {
+    "type": "object",
+    "properties": {
+      "compliance_report": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "standard": {
+              "type": "string",
+              "description": "The specific compliance standard being evaluated."
+            },
+            "compliant": {
+              "type": "boolean",
+              "description": "Indicates whether the contract is compliant with the specified standard."
+            },
+            "details": {
+              "type": "string",
+              "description": "Details about the compliance evaluation, including areas of non-compliance if any."
+            }
+          },
+          "required": ["standard", "compliant"]
+        },
+        "description": "A detailed compliance report for each standard, indicating whether the contract is compliant and providing details on the evaluation."
+      },
+      "overall_compliance": {
+        "type": "boolean",
+        "description": "Indicates whether the contract is overall compliant with all specified standards."
+      }
+    },
+    "description": "A comprehensive compliance report outlining the contract's adherence to specified standards, including detailed evaluations for each standard."
+  }
+}
