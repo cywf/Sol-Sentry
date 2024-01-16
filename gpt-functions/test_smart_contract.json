@@ -1,0 +1,59 @@
+{
+  "name": "test_smart_contract",
+  "description": "Execute a series of tests on a smart contract to ensure it behaves as expected.",
+  "parameters": {
+    "contract_code": {
+      "type": "string",
+      "description": "The full smart contract code."
+    },
+    "test_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A brief summary of what the test case is meant to validate."
+          },
+          "input": {
+            "type": "object",
+            "description": "Input conditions for the test, including function calls and parameters."
+          },
+          "expected_output": {
+            "type": "string",
+            "description": "The expected result or state of the contract after execution."
+          }
+        },
+        "required": ["description", "input", "expected_output"]
+      },
+      "description": "A series of test cases with defined inputs and expected outputs to validate contract behavior."
+    }
+  },
+  "required": ["contract_code", "test_cases"],
+  "output": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The description of the test case that was executed."
+        },
+        "passed": {
+          "type": "boolean",
+          "description": "Whether the test passed or failed based on the expected output."
+        },
+        "actual_output": {
+          "type": "string",
+          "description": "The actual result or state of the contract after execution."
+        },
+        "error": {
+          "type": "string",
+          "description": "Any error messages that were produced during the test, if applicable."
+        }
+      },
+      "required": ["description", "passed", "actual_output"]
+    },
+    "description": "The results of executing each test case, indicating pass/fail status and any discrepancies."
+  }
+}
