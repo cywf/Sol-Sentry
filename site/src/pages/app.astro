@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+const breadcrumbs = [{ name: 'Streamlit App', href: `${baseUrl}/app` }];
+---
+
+<Layout title="Streamlit App" breadcrumbs={breadcrumbs}>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Sol-Sentry Streamlit App</h1>
+    <p class="text-lg opacity-80">
+      Interactive smart contract analysis powered by AI.
+    </p>
+  </div>
+
+  <div class="alert alert-warning mb-6">
+    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    </svg>
+    <span>
+      <strong>Note:</strong> The Streamlit app may be sleeping. It will wake up automatically when you visit, 
+      but the initial load may take a few moments.
+    </span>
+  </div>
+
+  <div class="flex flex-col gap-4 mb-6">
+    <a
+      href="https://sol-sentry.streamlit.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-primary btn-lg"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+      Open App in New Tab
+    </a>
+  </div>
+
+  <div class="card bg-base-200 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">About the Streamlit App</h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-bold text-lg mb-2">Features:</h3>
+          <ul class="list-disc list-inside space-y-1 opacity-80">
+            <li>Upload or paste Solana smart contract code</li>
+            <li>AI-powered security analysis using GPT-4</li>
+            <li>Vulnerability detection and recommendations</li>
+            <li>Performance optimization suggestions</li>
+            <li>Best practices compliance checking</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg mb-2">How to Use:</h3>
+          <ol class="list-decimal list-inside space-y-1 opacity-80">
+            <li>Click "Open App in New Tab" above</li>
+            <li>Wait for the app to load (may take a moment if sleeping)</li>
+            <li>Upload your Solana program file or paste code directly</li>
+            <li>Review the generated security analysis report</li>
+          </ol>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="text-sm opacity-70">
+          <p>
+            The Streamlit app is hosted separately and provides an interactive interface 
+            for analyzing Solana smart contracts. For more information about Sol-Sentry's 
+            capabilities, visit the <a href={`${baseUrl}/docs`} class="link link-hover">documentation</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: Embedded iframe (can be toggled) -->
+  <div class="mt-8">
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="checkbox" />
+      <div class="collapse-title text-xl font-medium">
+        Advanced: Embed App (may not work with all browsers)
+      </div>
+      <div class="collapse-content">
+        <div class="alert alert-info mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>
+            Some features may not work correctly in embedded mode. We recommend opening the app in a new tab for the best experience.
+          </span>
+        </div>
+        <iframe
+          src="https://sol-sentry.streamlit.app/?embedded=true"
+          title="Sol-Sentry Streamlit App"
+          class="w-full h-[800px] rounded-lg border-2 border-base-300"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</Layout>

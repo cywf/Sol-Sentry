@@ -1,0 +1,144 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  breadcrumbs?: { name: string; href: string }[];
+}
+
+const { title, description = 'AI-assisted Solana smart-contract security & efficiency', breadcrumbs } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+
+// Get current year and build info
+const currentYear = new Date().getFullYear();
+const commitSha = process.env.GITHUB_SHA?.substring(0, 7) || 'dev';
+const buildTime = new Date().toISOString();
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="nightfall">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href={`${baseUrl}/assets/sol-sentry-logo.png`} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Sol-Sentry</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} | Sol-Sentry`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <script is:inline>
+      // Theme initialization - runs before page render to prevent flash
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const defaultTheme = 'nightfall';
+      const theme = storedTheme || (prefersDark ? defaultTheme : defaultTheme);
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Navbar -->
+    <div class="navbar bg-base-200 shadow-lg sticky top-0 z-40">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
+            <li><a href={`${baseUrl}/`}>Home</a></li>
+            <li><a href={`${baseUrl}/audit-explorer`}>Audit Explorer</a></li>
+            <li><a href={`${baseUrl}/statistics`}>Statistics</a></li>
+            <li><a href={`${baseUrl}/discussions`}>Discussions</a></li>
+            <li><a href={`${baseUrl}/development-board`}>Dev Board</a></li>
+            <li><a href={`${baseUrl}/create-issue`}>Create Issue</a></li>
+            <li><a href={`${baseUrl}/docs`}>Docs</a></li>
+            <li><a href={`${baseUrl}/visualizer`}>Visualizer</a></li>
+            <li><a href={`${baseUrl}/app`}>App</a></li>
+          </ul>
+        </div>
+        <a href={`${baseUrl}/`} class="btn btn-ghost normal-case text-xl">
+          <img src={`${baseUrl}/assets/sol-sentry-logo.png`} alt="Sol-Sentry" class="h-8 w-8" />
+          <span class="ml-2 hidden sm:inline">Sol-Sentry</span>
+        </a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href={`${baseUrl}/`}>Home</a></li>
+          <li><a href={`${baseUrl}/audit-explorer`}>Audit Explorer</a></li>
+          <li><a href={`${baseUrl}/statistics`}>Statistics</a></li>
+          <li><a href={`${baseUrl}/discussions`}>Discussions</a></li>
+          <li><a href={`${baseUrl}/development-board`}>Dev Board</a></li>
+          <li><a href={`${baseUrl}/create-issue`}>Create Issue</a></li>
+          <li><a href={`${baseUrl}/docs`}>Docs</a></li>
+          <li><a href={`${baseUrl}/visualizer`}>Visualizer</a></li>
+          <li><a href={`${baseUrl}/app`}>App</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <div id="theme-switcher-mount"></div>
+      </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <div class="text-sm breadcrumbs px-4 py-2 bg-base-100">
+        <ul>
+          <li><a href={`${baseUrl}/`}>Home</a></li>
+          {breadcrumbs.map((crumb) => (
+            <li><a href={crumb.href}>{crumb.name}</a></li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <!-- Main Content -->
+    <main id="main-content" class="container mx-auto px-4 py-8 min-h-screen">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+      <div>
+        <p class="font-bold">
+          Sol-Sentry
+        </p>
+        <p>AI-assisted Solana smart-contract security & efficiency</p>
+        <p>
+          <a href="https://github.com/cywf/Sol-Sentry/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="link link-hover">
+            MIT License
+          </a>
+        </p>
+        <p class="text-sm opacity-70">
+          Last deploy: {new Date(buildTime).toLocaleString()} | Commit: {commitSha}
+        </p>
+      </div>
+      <div>
+        <div class="grid grid-flow-col gap-4">
+          <a href="https://github.com/cywf/Sol-Sentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Theme Switcher Component Mount Point -->
+    <script>
+      import { createElement } from 'react';
+      import { createRoot } from 'react-dom/client';
+      import ThemeSwitcher from '../components/ThemeSwitcher';
+      
+      const container = document.getElementById('theme-switcher-mount');
+      if (container) {
+        const root = createRoot(container);
+        root.render(createElement(ThemeSwitcher));
+      }
+    </script>
+  </body>
+</html>

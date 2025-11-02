@@ -1,0 +1,256 @@
+[
+  {
+    "fileName": "analyze_contract_security.json",
+    "path": "gpt-functions/analyze_contract_security.json",
+    "name": "analyze_contract_security",
+    "description": "Analyzes smart contracts for security vulnerabilities, including checks for common patterns associated with known vulnerabilities such as reentrancy, overflow/underflow, and unhandled exceptions.",
+    "parameters": {
+      "code": {
+        "type": "string",
+        "description": "The Solidity smart contract code to analyze."
+      },
+      "language": {
+        "type": "string",
+        "description": "The programming language of the smart contract.",
+        "enum": [
+          "Solidity"
+        ]
+      },
+      "version": {
+        "type": "string",
+        "description": "The compiler version used for the smart contract."
+      }
+    },
+    "required": [
+      "code",
+      "language",
+      "version"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "assess_permissioning.json",
+    "path": "gpt-functions/assess_permissioning.json",
+    "name": "assess_permissioning",
+    "description": "Assesses the permissioning and access control mechanisms of a smart contract to ensure only authorized entities can execute certain functions or access specific data.",
+    "parameters": {
+      "code": {
+        "type": "string",
+        "description": "The Solidity smart contract code to assess for permissioning."
+      },
+      "analysis_type": {
+        "type": "string",
+        "description": "The type of analysis to perform on the smart contract code.",
+        "enum": [
+          "Static",
+          "Dynamic"
+        ]
+      }
+    },
+    "required": [
+      "code",
+      "analysis_type"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "audit_transaction_flow.json",
+    "path": "gpt-functions/audit_transaction_flow.json",
+    "name": "audit_transaction_flow",
+    "description": "Analyzes the flow of transactions within a smart contract to identify any potential bottlenecks or security vulnerabilities such as reentrancy or front-running.",
+    "parameters": {
+      "code": {
+        "type": "string",
+        "description": "The Solidity smart contract code to audit for transaction flow."
+      },
+      "analysis_depth": {
+        "type": "string",
+        "description": "Depth of the transaction flow analysis.",
+        "enum": [
+          "Shallow",
+          "Deep"
+        ]
+      }
+    },
+    "required": [
+      "code",
+      "analysis_depth"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "check_gas_optimization.json",
+    "path": "gpt-functions/check_gas_optimization.json",
+    "name": "check_gas_optimization",
+    "description": "Evaluates the gas efficiency of smart contract functions and suggests optimizations to reduce transaction costs.",
+    "parameters": {
+      "contract_code": {
+        "type": "string",
+        "description": "The source code of the smart contract in Solidity."
+      },
+      "optimization_level": {
+        "type": "string",
+        "description": "The level of gas optimization analysis to perform.",
+        "enum": [
+          "Basic",
+          "Advanced"
+        ]
+      }
+    },
+    "required": [
+      "contract_code",
+      "optimization_level"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "detect_reentrancy.json",
+    "path": "gpt-functions/detect_reentrancy.json",
+    "name": "detect_reentrancy",
+    "description": "Detect potential reentrancy vulnerabilities in smart contract functions that could lead to security breaches.",
+    "parameters": {
+      "contract_code": {
+        "type": "string",
+        "description": "The full Solidity source code of the smart contract to be analyzed for reentrancy vulnerabilities."
+      },
+      "analysis_depth": {
+        "type": "string",
+        "description": "The depth of analysis to perform; 'Shallow' for quick checks or 'Deep' for comprehensive analysis.",
+        "enum": [
+          "Shallow",
+          "Deep"
+        ]
+      }
+    },
+    "required": [
+      "contract_code",
+      "analysis_depth"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "evaluate_oracle_integrity.json",
+    "path": "gpt-functions/evaluate_oracle_integrity.json",
+    "name": "evaluate_oracle_integrity",
+    "description": "Evaluate the integrity and trustworthiness of oracles used within a smart contract.",
+    "parameters": {
+      "contract_code": {
+        "type": "string",
+        "description": "The Solidity code of the smart contract using oracles."
+      },
+      "oracle_addresses": {
+        "type": "array",
+        "description": "A list of oracle contract addresses to be evaluated for integrity checks."
+      }
+    },
+    "required": [
+      "contract_code",
+      "oracle_addresses"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "simulate_contract_behavior.json",
+    "path": "gpt-functions/simulate_contract_behavior.json",
+    "name": "simulate_contract_behavior",
+    "description": "Simulate the behavior of a smart contract under various conditions and inputs.",
+    "parameters": {
+      "contract_code": {
+        "type": "string",
+        "description": "The complete code of the smart contract to be simulated."
+      },
+      "simulation_scenarios": {
+        "type": "array",
+        "description": "A collection of scenarios, each with a unique set of transactions and initial states, to simulate."
+      }
+    },
+    "required": [
+      "contract_code",
+      "simulation_scenarios"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "test_smart_contract.json",
+    "path": "gpt-functions/test_smart_contract.json",
+    "name": "test_smart_contract",
+    "description": "Execute a series of tests on a smart contract to ensure it behaves as expected.",
+    "parameters": {
+      "contract_code": {
+        "type": "string",
+        "description": "The full smart contract code."
+      },
+      "test_cases": {
+        "type": "array",
+        "description": "A series of test cases with defined inputs and expected outputs to validate contract behavior."
+      }
+    },
+    "required": [
+      "contract_code",
+      "test_cases"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "validate_contract_compliance.json",
+    "path": "gpt-functions/validate_contract_compliance.json",
+    "name": "validate_contract_compliance",
+    "description": "Validate if the smart contract complies with standard security protocols and best practices in the blockchain industry.",
+    "parameters": {
+      "contract_code": {
+        "type": "string",
+        "description": "The full smart contract code to be analyzed for compliance."
+      },
+      "compliance_standards": {
+        "type": "array",
+        "description": "A set of compliance standards or guidelines that the contract should adhere to."
+      },
+      "blockchain_platform": {
+        "type": "string",
+        "description": "The blockchain platform for which the contract is written (e.g., Ethereum, Solana)."
+      }
+    },
+    "required": [
+      "contract_code",
+      "compliance_standards",
+      "blockchain_platform"
+    ],
+    "hasExample": false
+  },
+  {
+    "fileName": "verify_signature.json",
+    "path": "gpt-functions/verify_signature.json",
+    "name": "verify_signature",
+    "description": "Verifies the digital signature of a message or transaction to ensure its authenticity and integrity.",
+    "parameters": {
+      "message": {
+        "type": "string",
+        "description": "The original message or transaction data that was signed."
+      },
+      "signature": {
+        "type": "string",
+        "description": "The digital signature that needs to be verified."
+      },
+      "public_key": {
+        "type": "string",
+        "description": "The public key of the signer used to verify the signature."
+      },
+      "signature_algorithm": {
+        "type": "string",
+        "description": "The algorithm used for signing and verification.",
+        "enum": [
+          "ECDSA",
+          "RSA",
+          "EdDSA"
+        ]
+      }
+    },
+    "required": [
+      "message",
+      "signature",
+      "public_key",
+      "signature_algorithm"
+    ],
+    "hasExample": false
+  }
+]

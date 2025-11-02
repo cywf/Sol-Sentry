@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+const breadcrumbs = [{ name: 'Audit Explorer', href: `${baseUrl}/audit-explorer` }];
+---
+
+<Layout title="Audit Explorer" breadcrumbs={breadcrumbs}>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Audit Explorer</h1>
+    <p class="text-lg opacity-80">
+      Explore Solana smart contracts, GPT function specifications, and infrastructure modules.
+    </p>
+  </div>
+
+  <div id="audit-explorer-root"></div>
+
+  <script>
+    import { createElement } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import AuditExplorer from '../components/AuditExplorer';
+
+    const container = document.getElementById('audit-explorer-root');
+    if (container) {
+      const root = createRoot(container);
+      root.render(createElement(AuditExplorer));
+    }
+  </script>
+</Layout>
