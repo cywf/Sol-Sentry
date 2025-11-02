@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+const breadcrumbs = [{ name: 'Development Board', href: `${baseUrl}/development-board` }];
+---
+
+<Layout title="Development Board" breadcrumbs={breadcrumbs}>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Development Board</h1>
+    <p class="text-lg opacity-80">
+      Track project progress and current development tasks.
+    </p>
+  </div>
+
+  <div id="dev-board-root"></div>
+
+  <script>
+    import { createElement } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import DevelopmentBoard from '../components/DevelopmentBoard';
+
+    const container = document.getElementById('dev-board-root');
+    if (container) {
+      const root = createRoot(container);
+      root.render(createElement(DevelopmentBoard));
+    }
+  </script>
+</Layout>

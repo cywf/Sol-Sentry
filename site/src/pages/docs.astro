@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+const breadcrumbs = [{ name: 'Documentation', href: `${baseUrl}/docs` }];
+---
+
+<Layout title="Documentation" breadcrumbs={breadcrumbs}>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Documentation</h1>
+    <p class="text-lg opacity-80">
+      Complete guide to using Sol-Sentry for Solana smart contract security.
+    </p>
+  </div>
+
+  <div id="docs-root"></div>
+
+  <script>
+    import { createElement } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import Documentation from '../components/Documentation';
+
+    const container = document.getElementById('docs-root');
+    if (container) {
+      const root = createRoot(container);
+      root.render(createElement(Documentation));
+    }
+  </script>
+</Layout>

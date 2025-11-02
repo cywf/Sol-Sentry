@@ -1,0 +1,165 @@
+[
+  {
+    "path": "terraform",
+    "name": "terraform",
+    "files": [
+      "main.tf",
+      "outputs.tf",
+      "terraform.tfvars",
+      "variables.tf"
+    ],
+    "variables": [
+      {
+        "name": "use_aws",
+        "type": "bool",
+        "description": "Whether to use AWS resources",
+        "default": false
+      },
+      {
+        "name": "use_gcp",
+        "type": "bool",
+        "description": "Whether to use GCP resources",
+        "default": false
+      },
+      {
+        "name": "use_azure",
+        "type": "bool",
+        "description": "Whether to use Azure resources",
+        "default": false
+      },
+      {
+        "name": "aws_region",
+        "type": "string",
+        "description": "The AWS region to create resources in",
+        "default": "us-west-2"
+      },
+      {
+        "name": "gcp_project",
+        "type": "string",
+        "description": "The GCP project to create resources in"
+      },
+      {
+        "name": "gcp_region",
+        "type": "string",
+        "description": "The GCP region to create resources in",
+        "default": "us-central1"
+      },
+      {
+        "name": "azure_region",
+        "type": "string",
+        "description": "The Azure region to create resources in",
+        "default": "East US"
+      }
+    ]
+  },
+  {
+    "path": "terraform/modules/aws",
+    "name": "aws",
+    "files": [
+      "main.tf",
+      "outputs.tf",
+      "variables.tf"
+    ],
+    "variables": [
+      {
+        "name": "aws_region",
+        "description": "AWS region to deploy the resources",
+        "default": "us-east-1"
+      },
+      {
+        "name": "vpc_cidr",
+        "description": "CIDR block for the VPC",
+        "default": "10.0.0.0/16"
+      },
+      {
+        "name": "subnet_cidr",
+        "description": "CIDR block for the subnet",
+        "default": "10.0.1.0/24"
+      },
+      {
+        "name": "availability_zone",
+        "description": "Availability zone for the subnet",
+        "default": "us-east-1a"
+      },
+      {
+        "name": "ami_id",
+        "description": "AMI ID for the EC2 instance"
+      },
+      {
+        "name": "instance_type",
+        "description": "Instance type for the EC2 instance",
+        "default": "t2.micro"
+      },
+      {
+        "name": "key_name",
+        "description": "Key pair name for the EC2 instance SSH access"
+      }
+    ]
+  },
+  {
+    "path": "terraform/modules/azure",
+    "name": "azure",
+    "files": [
+      "main.tf",
+      "outputs.tf",
+      "variables.tf"
+    ],
+    "variables": [
+      {
+        "name": "location",
+        "description": "The Azure region where all resources in this example should be created.",
+        "default": "East US"
+      },
+      {
+        "name": "vm_size",
+        "description": "The virtual machine size.",
+        "default": "Standard_DS1_v2"
+      },
+      {
+        "name": "admin_username",
+        "description": "The admin username for the virtual machine.",
+        "default": "adminuser"
+      },
+      {
+        "name": "admin_password",
+        "type": "string",
+        "description": "The admin password for the virtual machine."
+      }
+    ]
+  },
+  {
+    "path": "terraform/modules/gcp",
+    "name": "gcp",
+    "files": [
+      "main.tf",
+      "outputs.tf",
+      "variables.tf"
+    ],
+    "variables": [
+      {
+        "name": "gcp_project",
+        "type": "string",
+        "description": "The GCP project ID.",
+        "default": "\"value\" // change me"
+      },
+      {
+        "name": "gcp_region",
+        "type": "string",
+        "description": "The GCP region where resources will be created.",
+        "default": "\"us-central1\" // change if needed"
+      },
+      {
+        "name": "gcp_zone",
+        "type": "string",
+        "description": "The GCP zone where the VM will be created.",
+        "default": "\"us-central1-a\" // change if needed"
+      },
+      {
+        "name": "gcp_credentials_file_path",
+        "type": "string",
+        "description": "The file path to the GCP credentials JSON file.",
+        "default": "\"value\" // change me"
+      }
+    ]
+  }
+]

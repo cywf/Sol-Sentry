@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+const breadcrumbs = [{ name: 'Statistics', href: `${baseUrl}/statistics` }];
+---
+
+<Layout title="Repository Statistics" breadcrumbs={breadcrumbs}>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Repository Statistics</h1>
+    <p class="text-lg opacity-80">
+      View repository activity, language breakdown, and contribution stats.
+    </p>
+  </div>
+
+  <div id="statistics-root"></div>
+
+  <script>
+    import { createElement } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import Statistics from '../components/Statistics';
+
+    const container = document.getElementById('statistics-root');
+    if (container) {
+      const root = createRoot(container);
+      root.render(createElement(Statistics));
+    }
+  </script>
+</Layout>

@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <div class="hero min-h-[60vh] bg-base-200 rounded-lg">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <img 
+        src={`${baseUrl}/assets/sol-sentry-logo.png`} 
+        alt="Sol-Sentry Logo" 
+        class="max-w-sm rounded-lg shadow-2xl"
+      />
+      <div>
+        <h1 class="text-5xl font-bold">Sol-Sentry</h1>
+        <p class="py-6 text-xl">
+          AI-assisted Solana smart-contract security & efficiency. 
+          Utilizing advanced AI analysis through GPT-4, Sol-Sentry offers 
+          in-depth analysis, predictive threat modeling, and best practice 
+          recommendations to fortify blockchain projects.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <a href={`${baseUrl}/audit-explorer`} class="btn btn-primary">
+            Explore Audits
+          </a>
+          <a href={`${baseUrl}/app`} class="btn btn-secondary">
+            Launch App
+          </a>
+          <a href={`${baseUrl}/docs`} class="btn btn-ghost">
+            Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Links Section -->
+  <div class="mt-12">
+    <h2 class="text-3xl font-bold mb-6">Quick Links</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Audit Explorer Card -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            Audit Explorer
+          </h3>
+          <p>Browse contracts, GPT function specs, and infrastructure modules.</p>
+          <div class="card-actions justify-end">
+            <a href={`${baseUrl}/audit-explorer`} class="btn btn-sm btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistics Card -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            Repository Stats
+          </h3>
+          <p>View repository statistics, languages, and activity trends.</p>
+          <div class="card-actions justify-end">
+            <a href={`${baseUrl}/statistics`} class="btn btn-sm btn-primary">View Stats</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discussions Card -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+            </svg>
+            Discussions
+          </h3>
+          <p>Join the community discussions and get help.</p>
+          <div class="card-actions justify-end">
+            <a href={`${baseUrl}/discussions`} class="btn btn-sm btn-primary">Discuss</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Development Board Card -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            Dev Board
+          </h3>
+          <p>Track project progress and development tasks.</p>
+          <div class="card-actions justify-end">
+            <a href={`${baseUrl}/development-board`} class="btn btn-sm btn-primary">View Board</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issues Card -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Create Issue
+          </h3>
+          <p>Report bugs, request features, or improve documentation.</p>
+          <div class="card-actions justify-end">
+            <a href={`${baseUrl}/create-issue`} class="btn btn-sm btn-primary">New Issue</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Streamlit App Card -->
+      <div class="card bg-base-200 shadow-xl">
+        <div class="card-body">
+          <h3 class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Streamlit App
+          </h3>
+          <p>Launch the interactive Streamlit application for analysis.</p>
+          <div class="card-actions justify-end">
+            <a href={`${baseUrl}/app`} class="btn btn-sm btn-primary">Launch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub Links -->
+  <div class="mt-12 flex flex-wrap gap-4">
+    <a 
+      href="https://github.com/cywf/Sol-Sentry/releases" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+    >
+      Latest Release
+    </a>
+    <a 
+      href="https://github.com/cywf/Sol-Sentry/issues" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+    >
+      Issues
+    </a>
+    <a 
+      href="https://github.com/cywf/Sol-Sentry/discussions" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+    >
+      Discussions
+    </a>
+    <a 
+      href="https://github.com/cywf/Sol-Sentry/blob/main/LICENSE" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+    >
+      License
+    </a>
+  </div>
+</Layout>

@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL || '/Sol-Sentry';
+const breadcrumbs = [{ name: 'Discussions', href: `${baseUrl}/discussions` }];
+---
+
+<Layout title="Discussions" breadcrumbs={breadcrumbs}>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">Community Discussions</h1>
+    <p class="text-lg opacity-80">
+      Browse recent discussions and join the community conversation.
+    </p>
+  </div>
+
+  <div id="discussions-root"></div>
+
+  <script>
+    import { createElement } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import Discussions from '../components/Discussions';
+
+    const container = document.getElementById('discussions-root');
+    if (container) {
+      const root = createRoot(container);
+      root.render(createElement(Discussions));
+    }
+  </script>
+</Layout>
